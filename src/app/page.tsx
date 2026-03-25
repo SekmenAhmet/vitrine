@@ -27,7 +27,7 @@ const products = [
     ctaHref: "https://sekmenahmet.gumroad.com/l/gsngbn",
     demoHref: "https://saas-blocks-kit.vercel.app",
     badge: "NEW",
-    badgeColor: "indigo",
+    badgeColor: "accent",
     comingSoon: false,
   },
   {
@@ -102,29 +102,30 @@ const products = [
     ctaHref: "mailto:sekmenahmet04@gmail.com",
     demoHref: null,
     badge: "SOON",
-    badgeColor: "orange",
+    badgeColor: "soon",
     comingSoon: true,
   },
 ] as const;
 
 const tagStyles = {
-  indigo: "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20",
-  violet: "bg-violet-500/10 text-violet-400 border border-violet-500/20",
-  green: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
+  indigo: "bg-indigo-100 text-indigo-700 border border-indigo-200",
+  violet: "bg-violet-100 text-violet-700 border border-violet-200",
+  green: "bg-emerald-100 text-emerald-700 border border-emerald-200",
 } as const;
 
 const badgeStyles = {
-  indigo: "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30",
-  orange: "bg-orange-500/20 text-orange-300 border border-orange-500/30",
+  accent:
+    "bg-[#ef7f4f]/10 text-[#ef7f4f] border border-[#ef7f4f]/30",
+  soon: "bg-amber-100 text-amber-700 border border-amber-200",
 } as const;
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen text-[var(--ink)]">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-[#1f1f1f] bg-[#0a0a0a]/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-black/10 bg-white/70 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <span className="text-sm font-semibold tracking-tight text-white">
+          <span className="font-heading text-base font-semibold tracking-tight text-[var(--ink)]">
             Ahmet Sekmen
           </span>
           <div className="flex items-center gap-4">
@@ -132,7 +133,7 @@ export default function Home() {
               href="https://github.com/SekmenAhmet"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 transition-colors hover:text-white"
+              className="text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
               aria-label="GitHub"
             >
               <GithubIcon size={18} />
@@ -141,7 +142,7 @@ export default function Home() {
               href="https://portfolio.ahmetsekmen.fr"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border border-[#1f1f1f] bg-[#111111] px-3 py-1.5 text-xs font-medium text-gray-300 transition-colors hover:border-[#333333] hover:text-white"
+              className="rounded-full border border-black/10 bg-white/80 px-4 py-1.5 text-xs font-medium text-[var(--ink)] shadow-sm transition-all hover:bg-white hover:shadow"
             >
               View Portfolio
             </a>
@@ -152,33 +153,33 @@ export default function Home() {
       <main>
         {/* Hero */}
         <section className="mx-auto max-w-6xl px-6 py-24 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#1f1f1f] bg-[#111111] px-4 py-1.5 text-xs font-medium text-gray-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-1.5 text-xs font-medium text-[var(--muted)] shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
             Developer &amp; Indie Maker
           </div>
-          <h1 className="mx-auto max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="font-heading mx-auto max-w-2xl text-4xl font-bold tracking-tight text-[var(--ink)] sm:text-5xl lg:text-6xl">
             Tools built for developers,{" "}
-            <span className="bg-gradient-to-r from-indigo-500 to-violet-600 bg-clip-text text-transparent">
-              by a developer.
-            </span>
+            <span style={{ color: "var(--accent)" }}>by a developer.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-base text-gray-400 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-xl text-base text-[var(--muted)] sm:text-lg">
             Production-ready templates, boilerplates and systems to ship faster.
           </p>
         </section>
 
         {/* Products */}
         <section className="mx-auto max-w-6xl px-6 pb-24">
-          <h2 className="mb-10 text-xl font-semibold text-white">Products</h2>
+          <h2 className="font-heading mb-10 text-xl font-semibold text-[var(--ink)]">
+            Products
+          </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((p) => (
               <div
                 key={p.name}
-                className={`group relative flex flex-col rounded-xl border border-[#1f1f1f] bg-[#111111] p-6 transition-all duration-200 hover:border-[#333333] hover:scale-[1.01]${p.comingSoon ? " opacity-75" : ""}`}
+                className={`group relative flex flex-col rounded-2xl border border-black/10 bg-white/70 p-6 shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.01]${p.comingSoon ? " opacity-75" : ""}`}
               >
                 {p.badge && p.badgeColor && (
                   <span
-                    className={`absolute right-4 top-4 rounded-md px-2 py-0.5 text-[10px] font-bold tracking-wider ${badgeStyles[p.badgeColor]}`}
+                    className={`absolute right-4 top-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-wider ${badgeStyles[p.badgeColor]}`}
                   >
                     {p.badge}
                   </span>
@@ -187,23 +188,23 @@ export default function Home() {
                 <div className="mb-4 flex items-center gap-3">
                   <span className="text-2xl">{p.emoji}</span>
                   <span
-                    className={`rounded-md px-2 py-0.5 text-xs font-medium ${tagStyles[p.tagColor]}`}
+                    className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${tagStyles[p.tagColor]}`}
                   >
                     {p.tag}
                   </span>
                 </div>
 
-                <h3 className="mb-2 text-base font-semibold text-white">
+                <h3 className="font-heading mb-2 text-base font-semibold text-[var(--ink)]">
                   {p.name}
                 </h3>
 
                 <p
-                  className={`mb-3 text-2xl font-bold${p.comingSoon ? " text-gray-500" : " text-white"}`}
+                  className={`mb-3 text-2xl font-bold${p.comingSoon ? " text-[var(--muted)]" : " text-[var(--ink)]"}`}
                 >
                   {p.price}
                 </p>
 
-                <p className="mb-6 flex-1 text-sm leading-relaxed text-gray-400">
+                <p className="mb-6 flex-1 text-sm leading-relaxed text-[var(--muted)]">
                   {p.description}
                 </p>
 
@@ -216,7 +217,7 @@ export default function Home() {
                         ? undefined
                         : "noopener noreferrer"
                     }
-                    className={`flex w-full items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold transition-opacity${p.comingSoon ? " border border-[#1f1f1f] bg-transparent text-gray-400 hover:border-[#333333]" : " bg-gradient-to-r from-indigo-500 to-violet-600 text-white hover:opacity-90"}`}
+                    className={`flex w-full items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-all${p.comingSoon ? " border border-black/10 bg-white text-[var(--muted)] hover:bg-white/80" : " bg-[var(--accent)] text-white hover:opacity-90 shadow-sm"}`}
                   >
                     {p.ctaLabel}
                   </a>
@@ -225,7 +226,7 @@ export default function Home() {
                       href={p.demoHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-1.5 text-xs text-gray-500 transition-colors hover:text-gray-300"
+                      className="flex items-center justify-center gap-1.5 text-xs text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
                     >
                       <ExternalLink size={12} />
                       Live demo
@@ -239,15 +240,15 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#1f1f1f] bg-[#0a0a0a]">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-xs text-gray-500 sm:flex-row">
+      <footer className="border-t border-black/10 bg-white/40">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 text-xs text-[var(--muted)] sm:flex-row">
           <span>Built with Next.js &amp; Tailwind</span>
           <div className="flex items-center gap-6">
             <a
               href="https://github.com/SekmenAhmet"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-gray-300"
+              className="transition-colors hover:text-[var(--ink)]"
             >
               GitHub
             </a>
@@ -255,7 +256,7 @@ export default function Home() {
               href="https://sekmenahmet.gumroad.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-gray-300"
+              className="transition-colors hover:text-[var(--ink)]"
             >
               Gumroad
             </a>
@@ -263,7 +264,7 @@ export default function Home() {
               href="https://ko-fi.com/ahmetsekmen"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-gray-300"
+              className="transition-colors hover:text-[var(--ink)]"
             >
               Ko-fi
             </a>
