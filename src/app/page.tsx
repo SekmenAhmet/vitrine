@@ -91,19 +91,19 @@ const products = [
     comingSoon: false,
   },
   {
-    emoji: "💼",
-    name: "Freelance CRM",
-    tag: "Notion",
-    tagColor: "green",
-    price: "Coming soon",
+    emoji: "🌤️",
+    name: "Hélios",
+    tag: "SaaS",
+    tagColor: "indigo",
+    price: "Free beta",
     description:
-      "Full freelance business OS. Clients, projects, invoices, time tracking & tasks.",
-    ctaLabel: "Notify me →",
-    ctaHref: "mailto:sekmenahmet04@gmail.com",
+      "Create legal invoices in under 2 minutes. Quotes, clients, recurring, PDF export.",
+    ctaLabel: "Open app →",
+    ctaHref: "https://helios.staki.fr",
     demoHref: null,
-    badge: "SOON",
-    badgeColor: "soon",
-    comingSoon: true,
+    badge: "BETA",
+    badgeColor: "accent",
+    comingSoon: false,
   },
 ] as const;
 
@@ -114,9 +114,7 @@ const tagStyles = {
 } as const;
 
 const badgeStyles = {
-  accent:
-    "bg-[#ef7f4f]/10 text-[#ef7f4f] border border-[#ef7f4f]/30",
-  soon: "bg-amber-100 text-amber-700 border border-amber-200",
+  accent: "bg-[#ef7f4f]/10 text-[#ef7f4f] border border-[#ef7f4f]/30",
 } as const;
 
 export default function Home() {
